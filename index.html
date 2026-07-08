@@ -18,6 +18,10 @@ h1
 {
     font-size:1.5em;
 }
+#f1 
+{
+    font-size:1em;
+}
 </style>
 </head>
 
@@ -28,8 +32,8 @@ h1
     Lot&nbsp; <input id="f1" type="text" size="3" inputmode="numeric">
 </p>
 
-<p id="f2">
-    Dato&nbsp;&nbsp;
+<p>
+    Dato <label id="f2">&nbsp;</label> 
 </p>
 
 <p>
@@ -40,19 +44,21 @@ h1
 var vf1=document.getElementById("f1");
 var vf2=document.getElementById("f2");
 
-function BlockMove(event) {
-  event.preventDefault() ;
+function BlockMove(event) 
+{
+    event.preventDefault();
  }
 
 function vis()
 {
-     var s1 = vf1.value;
-     var s2 = dateFromDay(2026,s1);
-     vf2.innerHTML += s2.getDate()+"/"+(s2.getMonth()+1);
+    var s1 = vf1.value;
+    var s2 = dateFromDay(2026,s1);
+    vf2.innerHTML = s2.getDate()+"/"+(s2.getMonth()+1);
 
 }
 
-function dateFromDay(year, day){
+function dateFromDay(year, day)
+{
     var date = new Date(year, 0);
     return new Date(date.setDate(day));
 }
