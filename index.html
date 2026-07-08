@@ -10,24 +10,30 @@
 <link rel="apple-touch-icon" href="dg.png">
 
 <style>
-body {
+body 
+{
     font-family: sans-serif;
 }
 h1 
 {
     font-size:1.5em;
 }
-
 </style>
 </head>
+
 <body ontouchmove="BlockMove(event);">
 <h1>LOT DATO</h1>
-    <p>Lot&nbsp; <input id="f1" type="text" size="3" inputmode="numeric"></p>
 
-    <p id="f2">Dato&nbsp;&nbsp;</p>
-</span>
 <p>
-<input id="b" type="button" value="Beregn" onclick="vis()">
+    Lot&nbsp; <input id="f1" type="text" size="3" inputmode="numeric">
+</p>
+
+<p id="f2">
+    Dato&nbsp;&nbsp;
+</p>
+
+<p>
+    <input id="b" type="button" value="Beregn" onclick="vis()">
 </p>
 
 <script>
@@ -35,7 +41,6 @@ var vf1=document.getElementById("f1");
 var vf2=document.getElementById("f2");
 
 function BlockMove(event) {
-  // Tell Safari not to move the window.
   event.preventDefault() ;
  }
 
@@ -48,8 +53,8 @@ function vis()
 }
 
 function dateFromDay(year, day){
-  var date = new Date(year, 0); // initialize a date in `year-01-01`
-  return new Date(date.setDate(day)); // add the number of days
+    var date = new Date(year, 0);
+    return new Date(date.setDate(day));
 }
 </script>
 </body>
