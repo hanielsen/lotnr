@@ -6,6 +6,7 @@
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="icon" href="dg.png">
 <link rel="apple-touch-icon" href="dg.png">
 
@@ -18,7 +19,7 @@ h1
 {
     font-size:1.5em;
 }
-#f1 
+#f1, #f2 
 {
     font-size:1em;
 }
@@ -33,35 +34,63 @@ h1
 </p>
 
 <p>
-    Dato <label id="f2">&nbsp;</label> 
+    Dato  <input id="f2" type="text" size="3">
 </p>
 
 <p>
-    <input id="b" type="button" value="Beregn" onclick="vis()">
+    <button onclick="vis()">Dato</button>
+    <button onclick="vis1()">Lot</button>
 </p>
 
 <script>
 var vf1=document.getElementById("f1");
 var vf2=document.getElementById("f2");
+var ym=[31,28,31,30,31,30,31,31,30,31,30,31];
 
 function BlockMove(event) 
 {
     event.preventDefault();
- }
+}
 
 function vis()
 {
     var s1 = vf1.value;
-    var s2 = dateFromDay(2026,s1);
-    vf2.innerHTML = s2.getDate()+"/"+(s2.getMonth()+1);
+    var s2 = dateFromDay(s1);
+    vf2.value = s2;
 
 }
 
-function dateFromDay(year, day)
+function vis1()
 {
-    var date = new Date(year, 0);
-    return new Date(date.setDate(day));
+    var s2 = vf2.value;
+    var s1 = dayFromDate(s2);
+    vf1.value = s1;
+
 }
+
+function dateFromDay(day)
+{
+    var mo=0;
+    var md=0;
+    while (ym[mo]<day)
+    {
+        day-=ym[mo];
+        mo++;
+    }
+    return ""+day+"/"+(mo+1); 
+}
+
+function dayFromDate(date)
+{
+    var md=date.split("/");
+    var dd=0;
+    for (i=0;i<Number(md[1]-1);i++)
+    {
+        dd += ym[i];
+    }
+    return dd+Number(md[0]); 
+}
+
 </script>
 </body>
 </html>
